@@ -1,0 +1,18 @@
+{
+  "name": "do-it-agent-marketplace",
+  "owner": {
+    "name": "brian-kelley-intel"
+  },
+  "metadata": {
+    "description": "Multi-agent orchestrator plugin: analyze, plan, implement, and grade — from prompt to PR.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "do-it-agent",
+      "description": "Takes a prompt through intent analysis, implementation planning, wave-based coding, and quality grading with automated PR creation.",
+      "version": "0.1.0",
+      "source": "."
+    }
+  ]
+}
