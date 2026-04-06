@@ -1,5 +1,5 @@
 ---
-name: orchestrator
+name: do-it-orchestrator
 description: >-
   Top-level debug pipeline orchestrator. Given a user's implementation request,
   drives six sequential phases — Analyze, Plan, Review, QA Contract, Implement
@@ -142,8 +142,25 @@ gh pr create --title "<summary>" --body-file "$RUN_DIR/plan/plan.md"
    - Summary of what was implemented
    - Grader's final verdict
    - Any unresolved findings
+   - Run artifacts location (`.do-it/runs/<run-id>/`)
 
-### 8. State Management
+### 8. Artifact Preservation
+
+**NEVER delete the run directory or any of its contents.** All intermediate
+files (analysis, plan, reviews, iterations, state.json) MUST be preserved
+after the pipeline completes — whether it succeeds, fails, or is aborted.
+The user needs these files to inspect the results.
+
+Cleanup is **user-initiated only**. Do not remove, truncate, or overwrite
+intermediate artifacts unless the user explicitly asks you to clean up.
+
+In your final report to the user, always include the run directory path:
+
+```
+Run artifacts preserved at: .do-it/runs/<run-id>/
+```
+
+### 9. State Management
 
 After EVERY phase transition, update `state.json`:
 - `phase`: current phase name
@@ -161,3 +178,5 @@ context to the user with the run ID so they can inspect `.do-it/runs/<id>/`.
 - If git operations fail (merge conflicts, push rejected), report to the user
   with specific remediation steps.
 - Never silently swallow errors — every failure must be surfaced.
+- **Never delete run artifacts.** On failure, preserve the full run directory
+  so the user can inspect what happened. Report the path in your error message.

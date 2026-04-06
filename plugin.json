@@ -15,6 +15,5 @@
     "multi-agent",
     "automation"
   ],
-  "skills": "skills/",
   "agents": "agents/"
 }
