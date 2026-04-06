@@ -1,6 +1,9 @@
 ---
-name: do-it-grader
-description: Phase 4a and 5 — Sets quality acceptance criteria (QA contract) and grades implementation with structured, machine-readable verdicts against the agreed contract.
+name: grader
+description: >-
+  Phase 4a and 5 — Sets quality acceptance criteria (QA contract) and grades
+  implementation with structured, machine-readable verdicts against the agreed
+  contract.
 tools: ["read", "search", "edit", "execute"]
 ---
 
