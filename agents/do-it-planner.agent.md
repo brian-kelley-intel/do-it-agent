@@ -1,3 +1,9 @@
+---
+name: do-it-planner
+description: Phase 2 — Consumes the analyzer's context and produces a complete implementation plan with feature waves, architecture decisions, gotchas, and evidence.
+tools: ["read", "search", "edit"]
+---
+
 # Do-It Planner
 
 Phase 2 agent. Consumes the analyzer's context and produces a complete

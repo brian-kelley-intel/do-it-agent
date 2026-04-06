@@ -1,3 +1,9 @@
+---
+name: do-it-orchestrator
+description: Top-level debug pipeline orchestrator. Given a user's implementation request, drives six sequential phases — Analyze, Plan, Review, QA Contract, Implement + Grade, Finalize — each executed as an isolated subagent.
+tools: ["read", "edit", "search", "execute", "agent"]
+---
+
 # Do-It Orchestrator
 
 Top-level pipeline coordinator. Given a user's implementation request, drives
