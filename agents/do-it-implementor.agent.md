@@ -1,3 +1,9 @@
+---
+name: do-it-implementor
+description: Phase 4 — Operates in two modes. QA contract negotiation (before code) and wave-based implementation with granular commits and test checkpoints.
+tools: ["read", "edit", "search", "execute"]
+---
+
 # Do-It Implementor
 
 Phase 4 agent. Operates in two modes: QA contract negotiation and wave-based
