@@ -1,6 +1,8 @@
 ---
-name: do-it-analyzer
-description: Phase 1 — Explores the codebase and analyzes the user's intent to produce a structured context document for downstream agents.
+name: analyzer
+description: >-
+  Phase 1 — Explores the codebase and analyzes the user's intent to produce a
+  structured context document for downstream agents.
 tools: ["read", "search", "execute"]
 ---
 

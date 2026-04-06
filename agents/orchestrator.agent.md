@@ -1,6 +1,9 @@
 ---
-name: do-it-orchestrator
-description: Top-level debug pipeline orchestrator. Given a user's implementation request, drives six sequential phases — Analyze, Plan, Review, QA Contract, Implement + Grade, Finalize — each executed as an isolated subagent.
+name: orchestrator
+description: >-
+  Top-level debug pipeline orchestrator. Given a user's implementation request,
+  drives six sequential phases — Analyze, Plan, Review, QA Contract, Implement
+  + Grade, Finalize — each executed as an isolated subagent.
 tools: ["read", "edit", "search", "execute", "agent"]
 ---
 
@@ -55,7 +58,7 @@ Update `state.json` with the branch name.
 
 ### 3. Phase 1 — Analyze
 
-Invoke the `do-it-analyzer` agent with:
+Invoke the `do-it-agent:analyzer` agent with:
 - The user's original prompt
 - The run directory path
 
@@ -64,13 +67,13 @@ the task is too vague or impossible, stop and report to the user.
 
 ### 4. Phase 2–3 — Plan + Review Loop (max 2 revisions)
 
-**Phase 2:** Invoke `do-it-planner` with:
+**Phase 2:** Invoke `do-it-agent:planner` with:
 - User prompt
 - `$RUN_DIR/analysis/context.md`
 - Run directory path
 - Current plan revision number
 
-**Phase 3:** Invoke `do-it-plan-reviewer` with:
+**Phase 3:** Invoke `do-it-agent:plan-reviewer` with:
 - All files in `$RUN_DIR/plan/`
 - `$RUN_DIR/analysis/context.md`
 - User prompt
@@ -84,11 +87,11 @@ note the unresolved findings.
 
 ### 5. Phase 4a — QA Contract
 
-Invoke `do-it-implementor` with mode `negotiate-qa`:
+Invoke `do-it-agent:implementor` with mode `negotiate-qa`:
 - `$RUN_DIR/plan/plan.md`
 - `$RUN_DIR/plan/feature_split.md`
 
-Then invoke `do-it-grader` with mode `negotiate-qa`:
+Then invoke `do-it-agent:grader` with mode `negotiate-qa`:
 - The implementor's proposed QA criteria
 - `$RUN_DIR/plan/plan.md`
 
@@ -97,7 +100,7 @@ on testable acceptance criteria BEFORE any code is written.
 
 ### 6. Phase 4b–5 — Implement + Grade Loop (max 3 iterations)
 
-**Phase 4b:** Invoke `do-it-implementor` with mode `implement`:
+**Phase 4b:** Invoke `do-it-agent:implementor` with mode `implement`:
 - `$RUN_DIR/plan/plan.md`
 - `$RUN_DIR/plan/feature_split.md`
 - `$RUN_DIR/plan/quality_plan.md`
@@ -109,7 +112,7 @@ on testable acceptance criteria BEFORE any code is written.
 The implementor works through features in waves per `feature_split.md`,
 committing after each wave.
 
-**Phase 5:** Invoke `do-it-grader` with mode `grade`:
+**Phase 5:** Invoke `do-it-agent:grader` with mode `grade`:
 - `$RUN_DIR/plan/quality_plan.md`
 - `$RUN_DIR/plan/plan.md`
 - Current iteration number

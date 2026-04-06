@@ -1,6 +1,8 @@
 ---
-name: do-it-plan-reviewer
-description: Phase 3 — Independently validates the planner's output for completeness, simplicity, and feasibility. Returns a structured accept/revise verdict.
+name: plan-reviewer
+description: >-
+  Phase 3 — Independently validates the planner's output for completeness,
+  simplicity, and feasibility. Returns a structured accept/revise verdict.
 tools: ["read", "search", "edit"]
 ---
 
